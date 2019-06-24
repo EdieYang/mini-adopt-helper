@@ -1,0 +1,88 @@
+<view class='header_cover'>
+  <view class='title'>欢迎您：{{chainName}}</view>
+  <view class='tab_cover'>
+    <view class='scan_tab' data-index='1' bindtap='chooseTab'>
+      <view class='tab_item' style='{{chooseTab==1?"border-bottom:2rpx solid #fff":"border-bottom:none"}}'>扫码核销</view>
+    </view>
+    <view class='input_tab' data-index='2' bindtap='chooseTab'>
+      <view class='tab_item' style='{{chooseTab==2?"border-bottom:2rpx solid #fff":"border-bottom:none"}}'>输入核销</view>
+    </view>
+    <view style='clear:both'></view>
+  </view>
+  <view class='operate_cover' wx:if='{{chooseTab==1}}'>
+    <image src='../images/scanner.png' class='operate_icon' bindtap='scanCode'></image>
+    <view class='operate_title'>点击扫码图标，开启扫码请将方框对准优惠券二维码</view>
+
+
+  </view>
+
+  <view class='operate_cover' wx:if='{{chooseTab==2}}'>
+
+    <view class='search-cover' style='margin-top:20px'>
+      <icon class='search-icon' type="search" size='20' />
+      <input class='search-input' placeholder='输入32位优惠券编号' auto-focus='true' bindinput='searchCouponCode' value='{{couponItemCode}}' />
+    </view>
+    <view class='operate_title'>请仔细核对优惠券编码是否正确！</view>
+
+  </view>
+
+
+</view>
+
+<view class='coupon_cover' wx:if='{{coupon!=null}}' style='border:1rpx solid #32c39c'>
+  <view class='coupon_title'>{{coupon.couponName}}</view>
+
+  <view class='coupon_content'>
+    <view class='coupon_label'>
+      <text class='label'>优惠券编号：</text>{{coupon.couponItemId}}</view>
+    <view class='coupon_label'>
+      <text class='label'>使用说明：</text>
+    </view>
+    <block wx:for='{{coupon.couponRule.rules}}'>
+      <view class='label_item'>
+        {{index+1}}.{{item}}
+      </view>
+    </block>
+
+    <view class='coupon_label'>
+      <text class='label'>生效期：</text>{{coupon.effectiveStart}}</view>
+    <view class='coupon_label'>
+      <text class='label'>有效期至：</text>{{coupon.effectiveStart}}</view>
+    <view class='coupon_label'>
+      <text class='label'>核销状态：</text>
+      <text style='color:#32c39c'>{{coupon.status==0?'未核销':'已核销'}}</text>
+    </view>
+    <block wx:if='{{coupon.status==0}}'>
+      <button class='check_btn' bindtap='checkCoupon'>核销</button>
+    </block>
+  </view>
+</view>
+
+
+
+<view class='coupon_cover' wx:if='{{couponList!=null && couponList.length>0}}'>
+  <view class='check_list'>最近核销记录</view>
+  <block wx:for='{{couponList}}'>
+    <view class='check_item'>
+      <view class='coupon_title'>{{item.couponName}}</view>
+
+      <view class='coupon_content'>
+        <view class='coupon_label'>
+          <text class='label'>优惠券编号：</text>{{item.couponItemId}}</view>
+        <!-- <view class='coupon_label'>
+          <text class='label'>使用者：</text>{{item.userName}}</view> -->
+        <view class='coupon_label'>
+          <text class='label'>核销状态：</text>
+          <text style='color:#32c39c'>{{item.status==0?'未核销':'已核销'}}</text>
+        </view>
+
+        <view class='coupon_label'>
+          <text class='label'>核销时间：</text>
+          <text style='color:#32c39c'>{{item.certifyTime}}</text>
+        </view>
+
+      </view>
+    </view>
+    <view wx:if='{{index!=couponList.length-1}}' style='border:1rpx dashed #eaeaea;margin-top:15rpx;margin-bottom:5rpx;width:90%;margin-left:5%;'></view>
+  </block>
+</view>
