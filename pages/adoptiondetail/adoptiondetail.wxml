@@ -184,8 +184,13 @@
 
 <block wx:if='{{petInfo.adoptStatus==0}}'>
   <view class='footer' style='border-top:1rpx solid #eaeaea'>
-    <view class='adopt-btn' bindtap='pass' data-petid='{{petInfo.petId}}'>通过</view>
-    <view class='adopt-btn' bindtap='refusePop' data-petid='{{petInfo.petId}}'>拒绝</view>
+    <form bindsubmit="submitPass" report-submit='true' report-submit-timeout='1000'>
+      <button class='adopt-btn' form-type="submit">通过</button>
+    </form>
+
+    <form bindsubmit="submitRefuse" report-submit='true' report-submit-timeout='1000'>
+      <button class='adopt-btn' form-type="submit">拒绝</button>
+    </form>
   </view>
 </block>
 

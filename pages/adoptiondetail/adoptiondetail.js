@@ -3,6 +3,8 @@ const photoPrefix = 'https://melody.memorychilli.com/';
 const app = getApp()
 var userId
 var petId
+var formId 
+
 
 Page({
 
@@ -290,13 +292,15 @@ Page({
     })
   },
 
-  pass: function(e) {
-    petId = e.currentTarget.dataset.petid
+  submitPass: function(e) {
+    petId = this.data.petInfo.petId
+    formId = e.detail.formId
     wx.request({
       url: app.globalData.requestUrlCms + '/adopt/pets/info',
       data: {
         petId: petId,
-        adoptStatus: 2
+        adoptStatus: 3,
+        formId: formId
       },
       method: "PUT",
       success: function(res) {
@@ -312,11 +316,12 @@ Page({
     })
 
   },
-  refusePop: function(e) {
+  submitRefuse: function(e) {
     this.setData({
       showFilter: true
     })
-    petId = e.currentTarget.dataset.petid
+    formId = e.detail.formId
+    petId = this.data.petInfo.petId
   },
   refuse: function(e) {
     var memo = e.detail.value.memo
@@ -325,7 +330,8 @@ Page({
       data: {
         petId: petId,
         adoptStatus: 1,
-        memo: memo
+        memo: memo,
+        formId: formId
       },
       method: "PUT",
       success: function(res) {
