@@ -1,17 +1,15 @@
 {
   "pages": [
-    "pages/welcome/welcome",
+    "pages/home/home",
     "pages/adoption/adoption",
     "pages/adoptiondetail/adoptiondetail",
-    "pages/login/login",
     "pages/index/index",
-    "pages/checklist/checklist",
-    "pages/logs/logs"
+    "pages/checklist/checklist"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "邻宠小助手",
+    "navigationBarTitleText": "邻宠领养小助手",
     "navigationBarTextStyle": "black"
   },
   "debug": true,

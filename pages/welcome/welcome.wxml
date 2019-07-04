@@ -1,7 +1,0 @@
-<view class='header'>今天{{weekday}}</view>
-<view class='clock'>{{nowTime}}</view>
-
-<view class='title'>邻宠小助手</view>
-<view class='content'>祝你工作顺利！</view>
-<button class='auth_btn' wx:if='{{showAuthBtn}}' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
-<view class='copyright'>linkpets.com ©2019</view>

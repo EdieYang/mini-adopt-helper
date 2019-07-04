@@ -1,0 +1,108 @@
+page {
+  background-color: #f7f8fa;
+}
+
+.header-cover {
+  background-color: #fff;
+  width: 720rpx;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10rpx;
+  margin-top: 30rpx;
+  margin-left: 15rpx;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+  box-shadow: 0 0 2rpx rgba(153, 153, 153, 0.5);
+}
+
+.statistic-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.statistic-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250rpx;
+}
+
+.s-title {
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.s-amount {
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: 30rpx;
+  font-weight: bold;
+}
+
+.statistic-area-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50rpx;
+}
+
+.statistic-item-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.s-title-2 {
+  font-size: 34rpx;
+  text-align: center;
+}
+
+.s-amount-2 {
+  font-size: 30rpx;
+  text-align: center;
+  margin-top: 30rpx;
+  font-weight: bold;
+}
+
+.tool-desk {
+  background-color: #fff;
+  width: 720rpx;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10rpx;
+  margin-top: 30rpx;
+  margin-left: 15rpx;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+  box-shadow: 0 0 2rpx rgba(153, 153, 153, 0.5);
+}
+
+.desk-cover {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.desk-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200rpx;
+}
+
+.desk-img {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.desk-text {
+  margin-top:30rpx;
+  font-size: 28rpx;
+  color: #000;
+  text-align: center;
+}

@@ -1,0 +1,41 @@
+<view class="header-cover">
+
+  <view class="statistic-area">
+    <view class="statistic-item">
+      <view class="s-title">今日申请数</view>
+      <view class="s-amount">1231</view>
+    </view>
+    <view class="statistic-item">
+      <view class="s-title">今日发布数</view>
+      <view class="s-amount">1231</view>
+    </view>
+    <view class="statistic-item">
+      <view class="s-title">今日登录数</view>
+      <view class="s-amount">123</view>
+    </view>
+  </view>
+
+  <view class="statistic-area-2">
+    <view class="statistic-item-2">
+      <view class="s-title-2">总用户人数</view>
+      <view class="s-amount-2">123123</view>
+    </view>
+  </view>
+
+</view>
+
+
+<view class="tool-desk">
+  <view class="desk-cover">
+    <view class="desk-item" bindtap="toAdoptionDetail">
+      <image src="../images/check.png" class="desk-img"></image>
+      <view class="desk-text">申请审核</view>
+    </view>
+    <view class="desk-item">
+      <image src="../images/authorize.png" class="desk-img"></image>
+      <view class="desk-text">实名审核</view>
+    </view>
+  </view>
+
+
+</view>
