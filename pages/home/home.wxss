@@ -3,7 +3,8 @@ page {
 }
 
 .header-cover {
-  background-color: #fff;
+  background-color: #1d50ff;
+  color:#fff;
   width: 720rpx;
   display: flex;
   flex-direction: column;
@@ -36,7 +37,7 @@ page {
 }
 
 .s-amount {
-  font-size: 28rpx;
+  font-size: 34rpx;
   text-align: center;
   margin-top: 30rpx;
   font-weight: bold;
@@ -47,7 +48,7 @@ page {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 50rpx;
+  margin-top: 40rpx;
 }
 
 .statistic-item-2 {
@@ -62,7 +63,7 @@ page {
 }
 
 .s-amount-2 {
-  font-size: 30rpx;
+  font-size: 38rpx;
   text-align: center;
   margin-top: 30rpx;
   font-weight: bold;

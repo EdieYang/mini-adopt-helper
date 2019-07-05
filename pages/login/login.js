@@ -1,5 +1,10 @@
+const photoPrefix = 'https://melody.memorychilli.com/';
+var util = require('../../utils/md5.js')
+var dateUtil = require('../../utils/date.js')
+
 const app = getApp()
-var userId;
+var userId
+
 
 Page({
 
@@ -7,279 +12,165 @@ Page({
    * 页面的初始数据
    */
   data: {
-    skipHiddenItemLayout: true,
-    focus1: true,
-    focus1_: false,
-    focus2: false,
-    focus3: false,
-    focus4: false,
-    hasInput1: false,
-    hasInput2: false,
-    hasInput3: false,
-    hasInput4: false,
-    input1: '',
-    input2: '',
-    input3: '',
-    input4: '',
-    showCode: true,
-    showOrgList: false,
-    showNext: false,
-    wrongCode: false,
-    orgId: ''
+    login: true
   },
-
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    userId=app.globalData.userId
-  },
-
-
-  doLogin: function(orgCode) {
-    var that = this
     wx.showLoading({
-      mask: true,
-      title: '校验中',
+      title: '验证身份中',
     })
-    wx.request({
-      url: app.globalData.requestUrlCms + '/sysOrg',
-      data: {
-        orgCode: orgCode,
-      },
-      method: "GET",
-      dataType: "json",
-      success: function(res) {
-        console.log(res.data)
-        if (res.data.data != null && res.data.data.orgId != '') {
-          // debugger
-          wx.hideLoading();
-          that.setData({
-            showOrgList: true,
-            showCode: false,
-            orgId: res.data.data.orgId
-          })
-
-
-          wx.request({
-            url: app.globalData.requestUrlCms + '/sysOrg/chains',
-            data: {
-              orgId: that.data.orgId,
-              chainName: ''
-            },
-            method: "GET",
-            dataType: "json",
-            success: function (res) {
-              console.log(res.data)
-              if (res.data.data != null) {
-                that.setData({
-                  chainList: res.data.data
-                })
-              }
-            }
-          })
-
-
-        } else {
-          wx.hideLoading();
-          that.setData({
-            focus1: true,
-            focus1_: false,
-            focus2: false,
-            focus3: false,
-            focus4: false,
-            focus1_: false,
-            focus2_: false,
-            focus3_: false,
-            focus4_: false,
-            hasInput1: false,
-            hasInput2: false,
-            hasInput3: false,
-            hasInput4: false,
-            input1: '',
-            input2: '',
-            input3: '',
-            input4: '',
-            wrongCode: true
-          })
-        }
-      }
-    })
-  },
-  bindKeyInput(e) {
-    var index = e.target.dataset.index
-
-    console.log(index)
-    if (e.detail.value != '') {
-      if (index == 1) {
-        this.setData({
-          focus1: false,
-          focus3: false,
-          focus4: false,
-          focus1_: true,
-          hasInput1: true,
-          input1: e.detail.value
-        })
-        var that = this
-        setTimeout(function() {
-          that.setData({
-            focus2: true,
-          })
-        }, 50)
-
-      } else if (index == 2) {
-        this.setData({
-          focus1: false,
-          focus2: false,
-          focus4: false,
-          focus2_: true,
-          hasInput2: true,
-          input2: e.detail.value
-        })
-        var that = this
-        setTimeout(function() {
-          that.setData({
-            focus3: true,
-          })
-        }, 50)
-      } else if (index == 3) {
-        this.setData({
-          focus1: false,
-          focus2: false,
-          focus3: false,
-          focus3_: true,
-          hasInput3: true,
-          input3: e.detail.value
-        })
-
-        var that = this
-        setTimeout(function() {
-          that.setData({
-            focus4: true,
-          })
-        }, 50)
-      } else {
-        this.setData({
-          focus4_: true,
-          hasInput4: true
-        })
-        var orgCode = this.data.input1 + '' + this.data.input2 + '' + this.data.input3 + '' + e.detail.value
-        //执行校验
-        this.doLogin(orgCode)
-      }
-
+    var that = this
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == null || userInfo != null && dateUtil.formatDateDiff(userInfo.expire) > 1) {
+     wx.hideLoading()
     } else {
-
-      if (index == 1) {
-        this.setData({
-          focus1: true,
-          focus1_: false
-        })
-      } else if (index == 2) {
-        this.setData({
-          focus2: false,
-          focus3: false,
-          focus4: false,
-          focus2_: false,
-          hasInput1: false
-        })
-        var that = this
-        setTimeout(function() {
-          that.setData({
-            focus1: true,
-          })
-        }, 50)
-      } else if (index == 3) {
-        this.setData({
-          focus1: false,
-          focus3: false,
-          focus4: false,
-          focus3_: false,
-          hasInput2: false
-        })
-        var that = this
-        setTimeout(function() {
-          that.setData({
-            focus2: true,
-          })
-        }, 50)
-      } else {
-        this.setData({
-          focus1: false,
-          focus2: false,
-          focus4: false,
-          focus4_: false,
-          hasInput3: false
-        })
-        var that = this
-        setTimeout(function() {
-          that.setData({
-            focus3: true,
-          })
-        }, 50)
-      }
-    }
-  },
-
-  searchChain: function(e) {
-    var that = this
-    var value = e.detail.value
-    wx.request({
-      url: app.globalData.requestUrlCms + '/sysOrg/chains',
-      data: {
-        orgId: this.data.orgId,
-        chainName: value
-      },
-      method: "GET",
-      dataType: "json",
-      success: function(res) {
-        console.log(res.data)
-        if (res.data.data != null) {
-          that.setData({
-            chainList: res.data.data
-          })
-        }
-      }
-    })
-  },
-
-  goChain: function(e) {
-    var that = this
-    // debugger
-    var chainId = e.currentTarget.dataset.chainid
-    this.bindSysUserToChain(chainId)
-  },
-  bindSysUserToChain:function(chainId){
-    // debugger
-    wx.showLoading({
-      title: '正在入驻',
-    })
-    if (chainId!=''){
-      wx.request({
-        url: app.globalData.requestUrlCms + '/sysUser/user',
-        data: {
-          userId: userId,
-          chainId: chainId
-        },
-        method: "PUT",
-        header: {
-          'content-type': 'application/x-www-form-urlencoded' // 默认值
-        },
-        success: function (res) {
-          console.log(res.data)
-          wx.hideLoading()
-          // debugger
-          if (res.data.data != null) {
-            app.globalData.userInfo=res.data.data
-            wx.redirectTo({
-              url: '../index/index',
-            })
-          }
-        }
+      app.globalData.userInfo = userInfo
+      wx.redirectTo({
+        url: '../home/home',
       })
     }
   },
+  login: function(e) {
+    var that = this
+    var username = e.detail.value.username
+    var password = e.detail.value.password
+    if (username == '') {
+      wx.showToast({
+        title: '账号不能为空',
+        icon: 'none'
+      })
+      return
+    }
+    if (password == '') {
+      wx.showToast({
+        title: '密码不能为空',
+        icon: 'none'
+      })
+      return
+    }
+    password = util.hexMD5(password)
+    wx.request({
+      url: app.globalData.requestUrlCms + '/sysUser/login',
+      data: {
+        userName: username,
+        password: password
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: function(res) {
+        if (res.data.success) {
+          var isActive = res.data.data.isActive
+          if (isActive == 0) {
+            that.setData({
+              showFilter: true
+            })
+          } else {
+            wx.showLoading({
+              title: '登录中',
+            })
+            var userInfo = res.data.data
+            app.globalData.userInfo = userInfo
+            userInfo.expire = new Date()
+            wx.setStorage({
+              key: 'userInfo',
+              data: userInfo,
+            })
+            wx.redirectTo({
+              url: '../home/home',
+            })
+          }
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
+
+  regitser: function(e) {
+    var that = this
+    var username = e.detail.value.username
+    var password = e.detail.value.password
+    var password2 = e.detail.value.password2
+    if (username == '') {
+      wx.showToast({
+        title: '账号不能为空',
+        icon: 'none'
+      })
+      return
+    }
+    if (password == '') {
+      wx.showToast({
+        title: '密码不能为空',
+        icon: 'none'
+      })
+      return
+    }
+
+    if (password != password2) {
+      wx.showToast({
+        title: '密码不一致',
+        icon: 'none'
+      })
+      return
+    }
+
+    password = util.hexMD5(password)
+    wx.request({
+      url: app.globalData.requestUrlCms + '/sysUser/register',
+      data: {
+        userName: username,
+        password: password
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: function(res) {
+        if (res.data.success) {
+          wx.showToast({
+            title: '注册成功',
+            duration: 2000
+          })
+          that.setData({
+            login: true
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
+  closeFilter:function(){
+    this.setData({
+      showFilter:false
+    })
+  },
+
+
+  toRegister: function() {
+    this.setData({
+      login: false
+    })
+  },
+  toLogin: function() {
+    this.setData({
+      login: true
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -327,75 +218,5 @@ Page({
    */
   onShareAppMessage: function() {
 
-  },
-  // getPhoneNumber: function(e) {
-  //   var that = this
-  //   console.log(e.detail.errMsg)
-  //   var iv = e.detail.iv
-  //   var encryptedData = e.detail.encryptedData
-  //   wx.showLoading({
-  //     title: '绑定中',
-  //     mask: true
-  //   })
-  //   userId = app.globalData.userId;
-  //   //login
-  //   wx.login({
-  //     success: res => {
-  //       if (res.code) {
-  //         //register new temp user
-  //         wx.request({
-  //           url: app.globalData.requestUrlWechat + '/wxmini/sysUser/login',
-  //           method: "GET",
-  //           data: {
-  //             code: res.code
-  //           },
-  //           dataType: "json",
-  //           success: function(res) {
-
-  //             const userId = res.data.data.userId;
-  //             const openId = res.data.data.openId;
-  //             const sessionKey = res.data.data.sessionKey;
-  //             if (userId && typeof(userId) != 'undefined' && userId != '') {
-  //               //授权回调函数获取用户详情    
-  //               wx.request({
-  //                 url: app.globalData.requestUrlWechat + '/wxmini/sysUser/authorizeUserPhoneNumber/' + userId,
-  //                 data: {
-  //                   encryptedData: encryptedData,
-  //                   iv: iv,
-  //                   sessionKey: sessionKey
-  //                 },
-  //                 dataType: "json",
-  //                 method: "POST",
-  //                 success: function(res) {
-  //                   debugger
-  //                   var userInfo = res.data.data.userInfo
-  //                   if (userInfo != null) {
-  //                     app.globalData.userInfo = userInfo
-  //                   }
-
-  //                   wx.hideLoading();
-  //                   that.setData({
-  //                     showOrgList: true,
-  //                     showCode: false,
-  //                     showNext: false
-  //                   })
-
-  //                 }
-  //               })
-
-  //             } else {
-  //               wx.showToast({
-  //                 title: '微信功能报错,请稍后再试',
-  //                 duration: 100000,
-  //                 mask: true,
-  //               })
-  //               console.log("服务器配置微信环境出错，请检查APPID和APPSECRT是否匹配！")
-  //             }
-  //           }
-  //         })
-  //       }
-  //     }
-  //   })
-
-  // },
+  }
 })

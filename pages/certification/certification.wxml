@@ -1,0 +1,54 @@
+<view class='tab-cover'>
+  <view class='tab-item' data-id='1' bindtap='chooseTab'>
+    <view class='tab' style='{{chosenId==1?"color:#fe395c;font-weight:800;font-size:36rpx;border-bottom:4rpx solid #fe395c":""}}'>
+      待审核
+    </view>
+  </view>
+  <view class='tab-item' data-id='2' bindtap='chooseTab'>
+    <view class='tab' style='{{chosenId==2?"color:#fe395c;font-weight:800;font-size:36rpx;border-bottom:4rpx solid #fe395c":""}}'>
+      审核失败
+    </view>
+  </view>
+  <view class='tab-item' data-id='3' bindtap='chooseTab'>
+    <view class='tab' style='{{chosenId==3?"color:#fe395c;font-weight:800;font-size:36rpx;border-bottom:4rpx solid #fe395c":""}}'>
+      审核通过
+    </view>
+  </view>
+</view>
+
+
+<view class='loading_cover' wx:if='{{showLoading}}' style='margin-top:150rpx;'>
+  <view class="spinner">
+    <view class="double-bounce1"></view>
+    <view class="double-bounce2"></view>
+  </view>
+  <view class='loading_text'>加载中</view>
+</view>
+
+
+<view class='extra-list' style='margin-top:120rpx;'>
+  <view class='ext-item-cover' wx:for="{{certificationList}}">
+    <view class='ext-item'>
+      <view class='ext-pic-cover'>
+        <image class='ext-pic' mode='aspectFill' src='{{item.imageBack}}'></image>
+        <image class='ext-pic' mode='aspectFill' src='{{item.imageFront}}'></image>
+      </view>
+      <view class='ext-info'>
+        <view class='ext-form'>
+          <view class="label">真实姓名：</view>
+          <view class="ext-val">{{item.realName}}</view>
+        </view>
+        <view class='ext-form'>
+          <view class="label">身份证号：</view>
+          <view class="ext-val">{{item.idCard}}</view>
+        </view>
+      </view>
+      <view class="btn-cover">
+        <button class="btn-pass" bindtap="pass" data-id='{{item.id}}'>审核通过</button>
+        <button class='btn-refuse' bindtap="refuse" data-id='{{item.id}}'>审核失败</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+  <view class='footer-cover' wx:if='{{bottomLast}}'>数据加载完毕</view>

@@ -1,10 +1,13 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/home/home",
     "pages/adoption/adoption",
     "pages/adoptiondetail/adoptiondetail",
     "pages/index/index",
-    "pages/checklist/checklist"
+    "pages/checklist/checklist",
+    "pages/certification/certification",
+    "pages/certificationdetail/certificationdetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,7 @@
+{
+  "backgroundColor": "#fafafa",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "onReachBottomDistance": 200
+}

@@ -1,42 +1,61 @@
-<view wx:if='{{showOrgList}}'>
-  <view class='dtpCode'>选择你所工作的门店</view>
-  <view class='dtpTip'>技术支持联系客服：corrine_z083</view>
-
-  <view class='search-cover' style='margin-top:20px'>
-    <icon class='search-icon' type="search" size='20' />
-    <input class='search-input' placeholder='搜索门店' auto-focus='true' bindinput='searchChain' />
+<view class='form-cover' wx:if='{{login}}'>
+  <view class='form-header'>欢迎登录
+    <text class='header-txt'>邻宠小助手</text>
   </view>
+  <form bindsubmit='login'>
+    <view class="login-item">
+      <view class="label">账号</view>
+      <input class='login-input' type="number" placeholder="手机号" name='username'></input>
+    </view>
+    <view class="login-item">
+      <view class="label">密码</view>
+      <input class='login-input' type="password" placeholder="请输入密码" name='password'></input>
+    </view>
 
-  <scroll-view class="scroll-view_H" scroll-y="true">
-    <block wx:for='{{chainList}}' wx:key='{{item}}'>
-      <view class="scroll-view-item_H" data-chainid='{{item.chainId}}' bindtap='goChain'>
-        <view class='list_cover'>
-          <view class='list_item1'>{{item.chainName}}</view>
-          <view class='list_item2'>{{item.chainAddress}}</view>
-        </view>
-      </view>
-    </block>
-    <view style='clear:both'></view>
-  </scroll-view>
+    <button class="submit-btn" form-type="submit">登录</button>
+    <button class="register-btn" bindtap="toRegister">注册</button>
 
+  </form>
+</view>
+
+<view class='form-cover' wx:if='{{!login}}'>
+  <view class='form-header'>欢迎注册
+    <text class='header-txt'>邻宠小助手</text>
+  </view>
+  <form bindsubmit='regitser'>
+    <view class="login-item">
+      <view class="label">账号</view>
+      <input class='login-input' type="number" placeholder="手机号" name='username' maxlength="11"></input>
+    </view>
+    <view class="login-item">
+      <view class="label">密码</view>
+      <input class='login-input' type="password" placeholder="请输入密码" name='password' maxlength="8"></input>
+    </view>
+    <view class="login-item">
+      <view class="label">确认密码</view>
+      <input class='login-input' type="password" placeholder="请输入密码" name='password2' maxlength="8"></input>
+    </view>
+    <button class="submit-btn" form-type="submit">确认注册</button>
+    <button class="register-btn" bindtap="toLogin">返回登录</button>
+
+  </form>
 </view>
 
 
-<view wx:if='{{showCode}}'>
-  <view class='dtpCode'>输入4位门店码</view>
-  <view class='dtpTip'>技术支持联系客服：corrine_z083</view>
-  <view class="verfityLayer">
-    <input class="verifyInput" placeholder="" focus="{{focus1}}" value="{{input1}}" type="number" maxlength="1" bindinput="bindKeyInput" data-index="1" style='{{focus1_?"color:#32c39c;border-color:#32c39c;":"color:#fff;border-color:#fff;"}}' disabled='{{e3333333333333?true:false}}'
-      confirm-hold="true" />
-    <input class="verifyInput" placeholder="" focus="{{focus2}}" value="{{input2}}" type="number" maxlength="1" bindinput="bindKeyInput" data-index="2" style='{{focus2_?"color:#32c39c;border-color:#32c39c;":"color:#fff;border-color:#fff;"}}' disabled='{{hasInput2?true:false}}'
-      confirm-hold="true" />
-    <input class="verifyInput" placeholder="" focus="{{focus3}}" value="{{input3}}" type="number" maxlength="1" bindinput="bindKeyInput" data-index="3" style='{{focus3_?"color:#32c39c;border-color:#32c39c;":"color:#fff;border-color:#fff;"}}' disabled='{{hasInput3?true:false}}'
-      confirm-hold="true" />
-    <input class="verifyInput" placeholder="" focus="{{focus4}}" value="{{input4}}" type="number" maxlength="1" bindinput="bindKeyInput" data-index="4" style='{{focus4_?"color:#32c39c;border-color:#32c39c;":"color:#fff;border-color:#fff;"}}' disabled='{{hasInput4?true:false}}'
-      confirm-hold="true" />
-  </view>
-  <view style='clear:both'></view>
-  <view class='wrong' wx:if='{{wrongCode}}'>门店码错误，请重新输入!</view>
 
-  <!-- <button class='nextBtn' wx:if='{{showNext}}'  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">下一步</button> -->
-</view>
+
+
+<block wx:if="{{showFilter}}">
+
+  <view class="tip_container" catchtouchmove='preventTouchMove'>
+
+  </view>
+  <view class="tipTap" catchtouchmove='preventTouchMove'>
+    <view class='header'>Oops!该用户账号未被管理员授权认证</view>
+    <view class='content'>请联系Edie，他会给你一个名正言顺的Title！</view>
+    <view class='filter-btn-cover'>
+      <view class='filter-btn' bindtap='cancelLogin'>耐心等待</view>
+      <button class="filter-btn-sumbit" bindtap="closeFilter">Give Up</button>
+    </view>
+  </view>
+</block>

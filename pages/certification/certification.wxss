@@ -1,0 +1,247 @@
+page {
+  background-color: #f7f8fa;
+}
+
+.tab-cover {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  background-color: #fff;
+  top: 0rpx;
+  z-index: 1000;
+}
+
+.tab-item {
+  color: #2d2d2d;
+  font-size: 28rpx;
+  width: 250rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab {
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.loading_cover {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.loading_text {
+  width: 120rpx;
+  font-size: 28rpx;
+  color: #999;
+  float: left;
+  text-align: center;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  float: left;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #1c43b2;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: bounce 2.0s infinite ease-in-out;
+  animation: bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes bounce {
+  0%, 100% {
+    -webkit-transform: scale(0.0);
+  }
+
+  50% {
+    -webkit-transform: scale(1.0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  }
+
+  50% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+/* 列表样式 */
+
+.extra-list {
+  width: 94vw;
+  padding-left: 3vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.ext-title {
+  font-size: 38rpx;
+  color: #000;
+  font-weight: 800;
+  margin-bottom: 20rpx;
+}
+
+.ext-item-cover {
+  margin-bottom:20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #fff;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.ext-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.ext-pic-cover {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.ext-pic {
+  width: 300rpx;
+  height: 250rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  margin-right: 20rpx;
+}
+
+.ext-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  margin-top:20rpx;
+}
+
+.ext-check {
+  position: absolute;
+  top: -20rpx;
+  right: -40rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.ext-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding:10rpx 20rpx;
+}
+
+.btn-cover{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top:30rpx;
+}
+
+.btn-pass{
+  background-color: #1d50ff;
+  color:#fff;
+  height:74rpx;
+  line-height: 74rpx;
+  font-size: 28rpx;
+  text-align: center;
+  margin:0 10rpx;
+}
+
+.btn-pass::after{
+  border:none;
+  outline: none;
+}
+
+
+.btn-refuse{
+  background-color: #f7f8fa;
+  color:#000;
+  height:74rpx;
+  line-height: 74rpx;
+  font-size: 28rpx;
+  text-align: center;
+  margin:0 10rpx;
+
+}
+
+
+.btn-refuse::after{
+  border:none;
+  outline: none;
+}
+
+.label {
+  font-size: 28rpx;
+}
+
+.ext-val {
+  font-size: 28rpx;
+}
+
+.footer-cover {
+  color: #999;
+  font-size: 28rpx;
+  text-align: center;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.ext-footer {
+  margin-top: 10rpx;
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.ext-btn {
+  border: 1rpx solid #3c67e0;
+  color: #3c67e0;
+  font-size: 28rpx;
+  border-radius: 100rpx;
+  width: 140rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: #fff;
+  text-align: center;
+  margin-right: 40rpx;
+}

@@ -1,159 +1,143 @@
-page {
-  background-color: #32c39c;
-  color: #fff;
+.form-cover {
+  width: 650rpx;
+  margin-left: 50rpx;
+  display: flex;
+  flex-direction: column;
 }
 
-.dtpCode {
-  color: #fff;
+.form-header {
   font-size: 46rpx;
-  text-align: center;
-  height: 60rpx;
-  line-height: 60rpx;
-  margin-top: 130rpx;
-  margin-bottom: 30rpx;
-}
-
-.dtpTip {
-  color: #fff;
-  font-size: 28rpx;
-  text-align: center;
-  height: 50rpx;
-  line-height: 50rpx;
-}
-
-.verfityLayer {
-  width: 500rpx;
-  margin-left: 125rpx;
-  margin-top: 40rpx;
-}
-
-.verifyInput {
-  height: 100rpx;
-  line-height: 100rpx;
-  width: 100rpx;
-  float: left;
-  margin-right: 8rpx;
-  margin-left: 8rpx;
-  /* border: 4rpx solid rgb(29, 161, 243); */
-  border: 4rpx solid #fff;
-  text-align: center;
-  border-radius: 10rpx;
-  color: #fff;
+  margin-bottom: 160rpx;
   font-weight: bold;
-  font-size: 48rpx;
-  background-color: #fff;
+  margin-top:50rpx;
 }
 
-.wrong {
-  font-size: 32rpx;
-  color: #fafa96;
-  text-align: center;
-  margin-top: 60rpx;
-  height: 60rpx;
-  line-height: 60rpx;
+.header-txt {
+  color: #1d50ff;
+  font-weight: bold;
+  font-size: 44rpx;
 }
 
-.nextBtn {
-  width: 60%;
-  margin-left: 20%;
+.login-item {
+  margin-bottom: 40rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.login-input {
   height: 100rpx;
   line-height: 100rpx;
-  border-radius: 100rpx;
-  background-color: #fff;
-  color: #32c39c;
   font-size: 32rpx;
-  text-align: center;
-  margin-top: 100rpx;
+  border-bottom: 1rpx solid #eaeaea;
 }
 
-.search-cover {
-  width: 550rpx;
-  height: 70rpx;
-  margin-left: 100rpx;
-  margin-top: 55rpx;
+.submit-btn {
+  background-color: #1d50ff;
+  color: #fff;
+  border-radius: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 100%;
+  margin-top: 80rpx;
+}
+
+.submit-btn::after {
+  border: none;
+  outline: none;
+}
+
+.register-btn {
+  background-color: #f7f8fa;
+  border-radius: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 100%;
+  margin-top: 50rpx;
+}
+
+.register-btn::after {
+  border: none;
+  outline: none;
+}
+
+
+/* 未认证弹出框 */
+
+.tip_container {
+  z-index: 80000;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.75;
+}
+
+.tipTap {
+  z-index: 90000;
+  position: fixed;
+  left: 60rpx;
+  top: 30vh;
+  height: 360rpx;
+  width: 630rpx;
   background-color: #fff;
-  box-shadow: 0 0 20rpx rgba(153, 153, 153, 0.5);
-  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 100rpx;
+  padding-bottom: 40rpx;
 }
 
-.search-icon {
-  margin-top: 15rpx;
-  margin-right: 15rpx;
-  margin-left: 15rpx;
-  float: left;
-}
-
-.locate-icon {
-  margin-top: 22rpx;
-  margin-right: 15rpx;
-  width: 40rpx;
-  height: 40rpx;
-  float: left;
-}
-
-.locate-icon-loading {
-  width: 35rpx;
-  height: 35rpx;
-  float: left;
-  margin-right: 15rpx;
-}
-
-.search-input {
-  height: 70rpx;
-  line-height: 70rpx;
-  font-size: 30rpx;
-  color: #262626;
+.header {
+  position: relative;
   text-align: left;
-  float: left;
-  width: 400rpx;
-}
-
-.list_cover {
+  color: #222;
+  font-size: 32rpx;
+  font-weight: 500;
   width: 80%;
   margin-left: 10%;
-  height: 175rpx;
-  padding-top: 10px;
-  background-color: #fff;
-  color: #32c39c;
-  box-shadow: 0 0 20rpx rgba(156, 77, 77, 0.5);
-  border-radius: 10rpx;
-  margin-top: 20rpx;
 }
 
-.list_item1 {
-  width: 90%;
-  color: #32c39c;
-  font-size: 26rpx;
-  text-align: center;
-  margin-left: 5%;
-  margin-top: 10rpx;
-  white-space: pre-wrap;
-  display: flex;
-}
-
-.list_item2 {
-  width: 90%;
-  color: #32c39c;
-  font-size: 26rpx;
+.content {
+  font-size: 30rpx;
+  color: #2d2d2d;
+  font-weight: bold;
   text-align: left;
-  margin-left: 5%;
-  white-space: pre-line;
-  margin-top: 15rpx;
-  display: flex;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 27rpx;
 }
 
-.scroll-view_H {
+.filter-btn-cover {
+  margin-top: 50rpx;
   display: flex;
-  justify-content: center;
-  width: 90%;
-  margin-left: 5%;
-  margin-top: 40rpx;
-  height: 600rpx;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-left: 10%;
 }
 
-.scroll-view-item_H {
-  text-align: left;
-  display: inline-block;
-  position: relative;
-  width:100%;
+.filter-btn {
+  width: 150rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  color: #019bff;
+  font-size: 28rpx;
+}
+
+.filter-btn-sumbit {
+  width: 250rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  background-color: #019bff;
+  color: #fff;
+  font-size: 28rpx;
+  margin: 0 0;
 }

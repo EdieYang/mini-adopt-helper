@@ -1,48 +1,20 @@
-const photoPrefix = 'https://melody.memorychilli.com/';
-
-const app = getApp()
-var userId
-
+// pages/certificationdetail/certificationdetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    statisticData:{}
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
-    var that = this
-    this.getStatisticData();
-      
+
   },
-  getStatisticData:function(){
-    var that=this
-    wx.request({
-      url: app.globalData.requestUrlCms + '/adopt/statistic/list',
-      method: "GET",
-      success: function (res) {
-        that.setData({
-          statisticData: res.data.data
-        })
-      }
-    })
-  },
-  toAdoptionCheck:function(){
-    wx.navigateTo({
-      url: '../adoption/adoption',
-    })
-  },  
-  toAuthorizeCheck: function () {
-    wx.navigateTo({
-      url: '../certification/certification',
-    })
-  },  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
