@@ -3,7 +3,7 @@ const photoPrefix = 'https://melody.memorychilli.com/';
 const app = getApp()
 var userId
 var petId
-var formId 
+var formId
 
 
 Page({
@@ -230,26 +230,7 @@ Page({
    */
   onShow: function() {
     var that = this
-    userId = app.globalData.userId
-    if (typeof userId != 'undefined' && userId) {
-      that.setData({
-        userId: userId
-      })
-      this.getAdoptionDetail()
-    } else {
-      app.IfAccess().then(function(res) {
-        if (res) {
-          userId = app.globalData.userId;
-          if (userId && typeof(userId) != 'undefined' && userId != '') {
-            that.setData({
-              userId: userId
-            })
-            that.getAdoptionDetail()
-          }
-        }
-      })
-    }
-
+    this.getAdoptionDetail()
   },
   online: function(e) {
     var that = this
@@ -346,9 +327,9 @@ Page({
       }
     })
   },
-  cancel:function(){
+  cancel: function() {
     this.setData({
-      showFilter:false
+      showFilter: false
     })
   },
   /**

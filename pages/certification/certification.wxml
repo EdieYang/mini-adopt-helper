@@ -30,8 +30,8 @@
   <view class='ext-item-cover' wx:for="{{certificationList}}">
     <view class='ext-item'>
       <view class='ext-pic-cover'>
-        <image class='ext-pic' mode='aspectFill' src='{{item.imageBack}}'></image>
-        <image class='ext-pic' mode='aspectFill' src='{{item.imageFront}}'></image>
+        <image class='ext-pic' mode='aspectFill' src='{{item.imageBack}}' bindtap="previewImg" data-img='{{item.imageBack}}'></image>
+        <image class='ext-pic' mode='aspectFill' src='{{item.imageFront}}' bindtap="previewImg" data-img='{{item.imageFront}}'></image>
       </view>
       <view class='ext-info'>
         <view class='ext-form'>
@@ -42,13 +42,45 @@
           <view class="label">身份证号：</view>
           <view class="ext-val">{{item.idCard}}</view>
         </view>
+         <view class='ext-form' wx:if='{{item.status==2}}'>
+          <view class="label">拒绝原因：</view>
+          <view class="ext-val">{{item.memo}}</view>
+        </view>
       </view>
-      <view class="btn-cover">
-        <button class="btn-pass" bindtap="pass" data-id='{{item.id}}'>审核通过</button>
-        <button class='btn-refuse' bindtap="refuse" data-id='{{item.id}}'>审核失败</button>
+      <view class="btn-cover" wx:if='{{item.status==0}}'>
+        <form report-submit="true" bindsubmit='pass'>
+          <input  name='id' value="{{item.id}}" style="display:none"></input>
+          <input  name='userId' value="{{item.userId}}" style="display:none"></input>
+          <button class="btn-pass" form-type="submit">审核通过</button>
+        </form>
+        <form report-submit="true" bindsubmit='refusePop'>
+          <input  name='id' value="{{item.id}}"  style="display:none"></input>
+          <input  name='userId' value="{{item.userId}}" style="display:none"></input>
+          <button class='btn-refuse' form-type="submit">审核失败</button>
+        </form>
       </view>
     </view>
   </view>
 </view>
 
-  <view class='footer-cover' wx:if='{{bottomLast}}'>数据加载完毕</view>
+
+
+
+<block wx:if="{{showFilter}}">
+
+  <view class="tip_container" catchtouchmove='preventTouchMove'>
+
+  </view>
+  <view class="tipTap" style='top:{{120}}px' catchtouchmove='preventTouchMove'>
+    <view class='header'>审核未通过原因</view>
+    <form bindsubmit='refuse'>
+      <textarea style='width:580rpx;height:340rpx;margin-top:60rpx;margin-left:10rpx;font-size:30rpx;border:1rpx solid #eaeaea;padding:15rpx 15rpx;' placeholder='请输入拒绝理由' placeholder-style='font-size:30rpx;' maxlength='200' cursor-spacing='30' name='memo'></textarea>
+      <view class='filter-btn-cover'>
+        <button class="filter-btn" form-type="reset" bindtap='cancel'>取消</button>
+        <button class="filter-btn-sumbit" form-type='submit'>提交</button>
+      </view>
+    </form>
+  </view>
+</block>
+
+<view class='footer-cover' wx:if='{{bottomLast}}'>数据加载完毕</view>

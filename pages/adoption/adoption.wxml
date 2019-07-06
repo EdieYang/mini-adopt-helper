@@ -29,14 +29,14 @@
 </view>
 
 
-<view class='extra-list'  style='margin-top:100rpx;'>
+<view class='extra-list' style='margin-top:100rpx;'>
   <view class='ext-item-cover' wx:for="{{petInfoList}}" style='margin-top:50rpx;'>
     <view class='ext-item' bindtap='detail' data-petid='{{item.petId}}'>
+    <image src='../images/check-in.png' class='ext-check' wx:if='{{item.adoptStatus==0}}'></image>
+        <image src='../images/check-ok.png' class='ext-check' wx:if='{{item.adoptStatus==2 || item.adoptStatus==3 || item.adoptStatus==4}}'></image>
+        <image src='../images/check-online.png' class='ext-check' style='width:60rpx;height:60rpx;' wx:if='{{item.adoptStatus==3}}'></image>
       <image class='ext-pic' mode='aspectFill' src='{{photoPrefix}}{{item.mediaList[0].mediaPath}}'></image>
       <view class='ext-info'>
-        <image src='../images/check-in.png' class='ext-check' wx:if='{{item.adoptStatus==0}}'></image>
-        <image src='../images/check-ok.png' class='ext-check' wx:if='{{item.adoptStatus==2}}'></image>
-        <image src='../images/check-online.png' class='ext-check' style='width:60rpx;height:60rpx;' wx:if='{{item.adoptStatus==3}}'></image>
         <view class='ext-name'>{{item.petName}}</view>
         <view class='ext-spec'>
           <view class='ext-age'>

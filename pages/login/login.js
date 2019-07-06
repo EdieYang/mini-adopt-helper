@@ -24,8 +24,8 @@ Page({
     })
     var that = this
     var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == null || userInfo != null && dateUtil.formatDateDiff(userInfo.expire) > 1) {
-     wx.hideLoading()
+    if (userInfo == null || typeof userInfo == 'undefined' || userInfo == '' || userInfo != null && dateUtil.formatDateDiff(userInfo.expire) > 1) {
+      wx.hideLoading()
     } else {
       app.globalData.userInfo = userInfo
       wx.redirectTo({
@@ -153,9 +153,9 @@ Page({
       }
     })
   },
-  closeFilter:function(){
+  closeFilter: function() {
     this.setData({
-      showFilter:false
+      showFilter: false
     })
   },
 

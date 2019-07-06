@@ -5,8 +5,8 @@ var userId
 var pageNum = 1
 var pageSize = 10
 var petInfoListArr = []
-var adoptStatus =0
-
+var adoptStatus = 0
+var bottomLast=false
 Page({
 
   /**
@@ -15,16 +15,16 @@ Page({
   data: {
     photoPrefix: photoPrefix,
     showLoading: true,
-    chosenId:1
+    chosenId: 1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    userId=app.globalData.userId
+  onLoad: function(options) {
+    userId = app.globalData.userId
   },
-  chooseTab: function (e) {
+  chooseTab: function(e) {
     var that = this
     var chosenId = e.currentTarget.dataset.id;
     if (chosenId == 1) {
@@ -32,18 +32,18 @@ Page({
     } else if (chosenId == 2) {
       adoptStatus = '1'
     } else if (chosenId == 3) {
-      adoptStatus = '2'
-    } 
+      adoptStatus = '2,3,4'
+    }
     this.setData({
       showLoading: true,
       chosenId: chosenId,
     })
-    petInfoListArr=[]
+    petInfoListArr = []
     this.getPetAdoptList()
 
   },
 
-  getPetAdoptList: function () {
+  getPetAdoptList: function() {
     var that = this
     wx.request({
       url: app.globalData.requestUrlCms + '/adopt/pets/list',
@@ -53,10 +53,10 @@ Page({
         pageSize: pageSize
       },
       method: "GET",
-      success: function (res) {
+      success: function(res) {
         var petInfoList = res.data.data.list
-        var bottomLast = false
-        if (res.data.data.total < pageSize) {
+        bottomLast = false
+        if (petInfoList.length < pageSize) {
           bottomLast = true
         }
         for (var i = 0; i < petInfoList.length; i++) {
@@ -71,7 +71,7 @@ Page({
       }
     })
   },
-  detail:function(e){
+  detail: function(e) {
     var petId = e.currentTarget.dataset.petid
     wx.navigateTo({
       url: '../adoptiondetail/adoptiondetail?petId=' + petId,
@@ -80,50 +80,53 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    petInfoListArr=[]
+  onShow: function() {
+    petInfoListArr = []
     this.getPetAdoptList()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
+  onReachBottom: function() {
+    if (!bottomLast) {
+      pageNum++
+      this.getPetAdoptList()
+    }
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
