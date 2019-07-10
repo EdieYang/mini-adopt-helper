@@ -3,7 +3,6 @@ const photoPrefix = 'https://melody.memorychilli.com/';
 const app = getApp()
 var userId
 var petId
-var formId
 
 
 Page({
@@ -273,56 +272,64 @@ Page({
     })
   },
 
-  submitPass: function(e) {
+  submitPass: function() {
+    wx.showLoading({
+      title: '操作中',
+    })
     petId = this.data.petInfo.petId
-    formId = e.detail.formId
     wx.request({
       url: app.globalData.requestUrlCms + '/adopt/pets/info',
       data: {
         petId: petId,
-        adoptStatus: 3,
-        formId: formId
+        adoptStatus: 3
       },
       method: "PUT",
       success: function(res) {
+        wx.hideLoading()
         if (res.data.success) {
           wx.showToast({
             title: '审核成功',
           })
-          wx.navigateBack({
-            delta: 1
-          })
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 2000)
         }
       }
     })
 
   },
-  submitRefuse: function(e) {
+  submitRefuse: function() {
     this.setData({
       showFilter: true
     })
-    formId = e.detail.formId
     petId = this.data.petInfo.petId
   },
   refuse: function(e) {
+    wx.showLoading({
+      title: '操作中',
+    })
     var memo = e.detail.value.memo
     wx.request({
       url: app.globalData.requestUrlCms + '/adopt/pets/info',
       data: {
         petId: petId,
         adoptStatus: 1,
-        memo: memo,
-        formId: formId
+        memo: memo
       },
       method: "PUT",
       success: function(res) {
+        wx.hideLoading()
         if (res.data.success) {
           wx.showToast({
             title: '审核成功',
           })
-          wx.navigateBack({
-            delta: 1
-          })
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 2000)
         }
       }
     })

@@ -217,12 +217,18 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-left: 20rpx;
+  margin-left: 40rpx;
 }
 
 .con-name {
   font-size: 32rpx;
   color: #000;
+  font-weight: bold;
+}
+
+.con-privacy{
+  font-size: 31rpx;
+  color: #333;
   font-weight: bold;
 }
 

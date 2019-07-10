@@ -142,12 +142,14 @@
       <image class='contact-img' src='{{adoptUserInfo.portrait}}'></image>
       <view class='contact-info'>
         <view class='con-name'>{{adoptUserInfo.nickName}}</view>
-        <view class='con-tag'>爱心救助人</view>
+        <view class='con-privacy'>手机号：{{petInfo.mobilePhone}}</view>
+        <view class='con-privacy'>居住地：{{petInfo.address}}</view>
+        <view class='con-privacy'>微信号：{{petInfo.wxId?'petInfo.wxId':'无'}}</view>
         <view class='con-info'>
           <view>{{adoptUserInfo.ageFrom}}</view>
           <view>{{adoptUserInfo.starSign}}</view>
           <view>
-            <block wx:if='{{adoptUserInfo.gender==1}}'>
+            <block wx:if='{{adoptUserInfo.gender==0}}'>
               男生
             </block>
             <block wx:else>
@@ -184,13 +186,8 @@
 
 <block wx:if='{{petInfo.adoptStatus==0}}'>
   <view class='footer' style='border-top:1rpx solid #eaeaea'>
-    <form bindsubmit="submitPass" report-submit='true' report-submit-timeout='1000'>
-      <button class='adopt-btn' form-type="submit">通过</button>
-    </form>
-
-    <form bindsubmit="submitRefuse" report-submit='true' report-submit-timeout='1000'>
-      <button class='adopt-btn' form-type="submit">拒绝</button>
-    </form>
+    <button class='adopt-btn' bindtap="submitPass">通过</button>
+    <button class='adopt-btn' bindtap='submitRefuse'>拒绝</button>
   </view>
 </block>
 

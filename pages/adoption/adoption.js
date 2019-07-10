@@ -6,7 +6,8 @@ var pageNum = 1
 var pageSize = 10
 var petInfoListArr = []
 var adoptStatus = 0
-var bottomLast=false
+var bottomLast = false
+
 Page({
 
   /**
@@ -39,6 +40,8 @@ Page({
       chosenId: chosenId,
     })
     petInfoListArr = []
+    bottomLast = false
+    pageNum = 1
     this.getPetAdoptList()
 
   },
@@ -89,6 +92,8 @@ Page({
    */
   onShow: function() {
     petInfoListArr = []
+    bottomLast = false
+    pageNum = 1
     this.getPetAdoptList()
   },
 
@@ -121,12 +126,6 @@ Page({
       pageNum++
       this.getPetAdoptList()
     }
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
   }
+
 })

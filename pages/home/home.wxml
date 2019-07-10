@@ -29,7 +29,7 @@
   <view class="desk-cover">
     <view class="desk-item" bindtap="toAdoptionCheck">
       <image src="../images/check.png" class="desk-img"></image>
-      <view class="desk-text">申请审核</view>
+      <view class="desk-text">发布审核</view>
     </view>
     <view class="desk-item" bindtap="toAuthorizeCheck">
       <image src="../images/authorize.png" class="desk-img"></image>
