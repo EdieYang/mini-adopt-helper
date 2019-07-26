@@ -24,6 +24,9 @@ Page({
    */
   onLoad: function(options) {
     userId = app.globalData.userId
+    adoptStatus = 0
+    bottomLast = false
+    pageNum = 1
   },
   chooseTab: function(e) {
     var that = this
