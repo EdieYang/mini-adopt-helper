@@ -14,7 +14,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.6.4",
 	"appid": "wx84007a216d0929d0",
-	"projectname": "linpets-helper",
+	"projectname": "mini-adopt-helper",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

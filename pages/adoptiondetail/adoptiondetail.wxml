@@ -144,7 +144,7 @@
         <view class='con-name'>{{adoptUserInfo.nickName}}</view>
         <view class='con-privacy'>手机号：{{petInfo.mobilePhone}}</view>
         <view class='con-privacy'>居住地：{{petInfo.address}}</view>
-        <view class='con-privacy'>微信号：{{petInfo.wxId?'petInfo.wxId':'无'}}</view>
+        <view class='con-privacy'>微信号：{{petInfo.wxId?petInfo.wxId:'无'}}</view>
         <view class='con-info'>
           <view>{{adoptUserInfo.ageFrom}}</view>
           <view>{{adoptUserInfo.starSign}}</view>
