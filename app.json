@@ -7,7 +7,11 @@
     "pages/index/index",
     "pages/checklist/checklist",
     "pages/certification/certification",
-    "pages/certificationdetail/certificationdetail"
+    "pages/certificationdetail/certificationdetail",
+    "pages/apply/apply",
+    "pages/applydetail/applydetail",
+    "pages/contract/contract",
+    "pages/contractdwn/contractdwn"
   ],
   "window": {
     "backgroundTextStyle": "light",

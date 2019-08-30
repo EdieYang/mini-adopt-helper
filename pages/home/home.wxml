@@ -35,6 +35,10 @@
       <image src="../images/authorize.png" class="desk-img"></image>
       <view class="desk-text">实名审核</view>
     </view>
+     <view class="desk-item" bindtap="toApplyCheck">
+      <image src="../images/apply.png" class="desk-img"></image>
+      <view class="desk-text">领养申请</view>
+    </view>
   </view>
 
 
