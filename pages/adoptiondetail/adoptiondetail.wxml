@@ -146,13 +146,13 @@
         <view class='con-privacy'>居住地：{{petInfo.address}}</view>
         <view class='con-privacy'>微信号：{{petInfo.wxId?petInfo.wxId:'无'}}</view>
         <view class='con-info'>
-          <view>{{adoptUserInfo.ageFrom}}</view>
-          <view>{{adoptUserInfo.starSign}}</view>
-          <view>
+          <view wx:if='{{adoptUserInfo.ageFrom!=""}}'>{{adoptUserInfo.ageFrom}}</view>
+          <view wx:if='{{adoptUserInfo.starSign!=""}}'>{{adoptUserInfo.starSign}}</view>
+          <view wx:if='{{adoptUserInfo.gender!=null}}'>
             <block wx:if='{{adoptUserInfo.gender==0}}'>
               男生
             </block>
-            <block wx:else>
+            <block wx:if='{{adoptUserInfo.gender==1}}'>
               女生
             </block>
           </view>
