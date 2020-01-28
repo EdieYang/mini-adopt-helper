@@ -6,7 +6,6 @@ var formId
 var id
 var userId
 var bottomLast = false
-const photoPrefix = 'https://pic.linchongpets.com/';
 const app = getApp()
 
 Page({
@@ -18,7 +17,7 @@ Page({
     showLoading: true,
     chosenId: 1,
     showFilter: false,
-    photoPrefix: photoPrefix
+    photoPrefix: app.globalData.photoPrefix
   },
 
   /**

@@ -1,5 +1,4 @@
-const photoPrefix = 'https://melody.memorychilli.com/';
-var util = require('../../utils/md5.js')
+var decryptUtil = require('../../utils/sha256.js')
 var dateUtil = require('../../utils/date.js')
 
 const app = getApp()
@@ -35,9 +34,9 @@ Page({
   },
   login: function(e) {
     var that = this
-    var username = e.detail.value.username
+    var userAccount = e.detail.value.userAccount
     var password = e.detail.value.password
-    if (username == '') {
+    if (userAccount == '') {
       wx.showToast({
         title: '账号不能为空',
         icon: 'none'
@@ -51,39 +50,46 @@ Page({
       })
       return
     }
-    password = util.hexMD5(password)
+    password = decryptUtil.sha256(password)
     wx.request({
-      url: app.globalData.requestUrlCms + '/sysUser/login',
+      url: app.globalData.requestUrlCms + '/sys/login',
       data: {
-        userName: username,
+        userAccount: userAccount,
         password: password
       },
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
+      method: "GET",
       success: function(res) {
         if (res.data.success) {
-          var isActive = res.data.data.isActive
-          if (isActive == 0) {
-            that.setData({
-              showFilter: true
-            })
-          } else {
-            wx.showLoading({
-              title: '登录中',
-            })
-            var userInfo = res.data.data
-            app.globalData.userInfo = userInfo
-            userInfo.expire = new Date()
-            wx.setStorage({
-              key: 'userInfo',
-              data: userInfo,
-            })
-            wx.redirectTo({
-              url: '../home/home',
-            })
-          }
+          var userInfo=res.data.data
+          var userId=userInfo.userId
+          //获取用户权限
+          wx.request({
+            url: app.globalData.requestUrlCms + '/sys/login/permission',
+            data: {
+              userId: userId
+            },
+            method: "GET",
+            success: function (res) {
+              if (res.data.data.userRoles[0] != 'MINI_HELP_ADMIN') {
+                that.setData({
+                  showFilter: true
+                })
+              } else {
+                wx.showLoading({
+                  title: '登录中',
+                })
+                app.globalData.userInfo = userInfo
+                userInfo.expire = new Date()
+                wx.setStorage({
+                  key: 'userInfo',
+                  data: userInfo,
+                })
+                wx.redirectTo({
+                  url: '../home/home',
+                })
+              }
+            }
+          })
         } else {
           wx.showToast({
             title: res.data.msg,
@@ -97,10 +103,10 @@ Page({
 
   regitser: function(e) {
     var that = this
-    var username = e.detail.value.username
+    var userAccount = e.detail.value.userAccount
     var password = e.detail.value.password
     var password2 = e.detail.value.password2
-    if (username == '') {
+    if (userAccount == '') {
       wx.showToast({
         title: '账号不能为空',
         icon: 'none'
@@ -123,17 +129,15 @@ Page({
       return
     }
 
-    password = util.hexMD5(password)
+    password = decryptUtil.sha256(password)
     wx.request({
-      url: app.globalData.requestUrlCms + '/sysUser/register',
+      url: app.globalData.requestUrlCms + '/sys/user',
       data: {
-        userName: username,
-        password: password
+        userAccount: userAccount,
+        password: password,
+        createBy:'MINI_HELPER'
       },
       method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
       success: function(res) {
         if (res.data.success) {
           wx.showToast({

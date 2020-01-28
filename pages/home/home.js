@@ -1,5 +1,3 @@
-const photoPrefix = 'https://melody.memorychilli.com/';
-
 const app = getApp()
 var userId
 
@@ -21,7 +19,7 @@ Page({
   getStatisticData:function(){
     var that=this
     wx.request({
-      url: app.globalData.requestUrlCms + '/adopt/statistic/list',
+      url: app.globalData.requestUrlCms + '/adopt/statistic/today',
       method: "GET",
       success: function (res) {
         that.setData({

@@ -1,4 +1,3 @@
-const photoPrefix = 'https://pic.linchongpets.com/';
 
 const app = getApp()
 var pageNum = 1

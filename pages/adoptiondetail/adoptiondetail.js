@@ -1,6 +1,6 @@
-const photoPrefix = 'https://pic.linchongpets.com/';
-
 const app = getApp()
+const photoPrefix = app.globalData.photoPrefix;
+
 var userId
 var petId
 

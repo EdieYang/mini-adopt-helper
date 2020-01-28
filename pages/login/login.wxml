@@ -5,7 +5,7 @@
   <form bindsubmit='login'>
     <view class="login-item">
       <view class="label">账号</view>
-      <input class='login-input' type="number" placeholder="手机号" name='username'></input>
+      <input class='login-input' type="number" placeholder="手机号" name='userAccount'></input>
     </view>
     <view class="login-item">
       <view class="label">密码</view>
@@ -25,7 +25,7 @@
   <form bindsubmit='regitser'>
     <view class="login-item">
       <view class="label">账号</view>
-      <input class='login-input' type="number" placeholder="手机号" name='username' maxlength="11"></input>
+      <input class='login-input' type="number" placeholder="手机号" name='userAccount' maxlength="11"></input>
     </view>
     <view class="login-item">
       <view class="label">密码</view>

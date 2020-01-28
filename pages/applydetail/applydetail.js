@@ -1,5 +1,4 @@
 const util = require('../../utils/util.js')
-const photoPrefix = 'https://pic.linchongpets.com/';
 const app = getApp()
 var userId
 var applyId
@@ -12,7 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    photoPrefix: photoPrefix,
+    photoPrefix: app.globalData.photoPrefix,
   },
 
   /**

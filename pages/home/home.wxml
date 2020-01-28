@@ -7,7 +7,7 @@
     </view>
     <view class="statistic-item">
       <view class="s-title">今日发布数</view>
-      <view class="s-amount">{{statisticData.petAdoptTodayCount}}</view>
+      <view class="s-amount">{{statisticData.adoptTodayCount}}</view>
     </view>
     <view class="statistic-item">
       <view class="s-title">今日登录数</view>

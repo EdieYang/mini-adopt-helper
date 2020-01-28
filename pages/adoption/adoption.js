@@ -1,5 +1,3 @@
-const photoPrefix = 'https://pic.linchongpets.com/';
-
 const app = getApp()
 var userId
 var pageNum = 1
@@ -14,7 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    photoPrefix: photoPrefix,
+    photoPrefix: app.globalData.photoPrefix,
     showLoading: true,
     chosenId: 1
   },
