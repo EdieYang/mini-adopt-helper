@@ -142,19 +142,19 @@ Page({
     return dayStr + "天" + hrStr + "小时" + minStr + "分钟" + secStr + "秒";
 
   },
-  copyWx: function() {
-    var wxId = 'zmydwx83'
-    wx.setClipboardData({
-      data: wxId,
-      success(res) {
-        wx.showToast({
-          title: '复制成功',
-          icon: 'success',
-          duration: 2000
-        })
-      }
-    })
-  },
+  // copyWx: function() {
+  //   var wxId = 'zmydwx83'
+  //   wx.setClipboardData({
+  //     data: wxId,
+  //     success(res) {
+  //       wx.showToast({
+  //         title: '复制成功',
+  //         icon: 'success',
+  //         duration: 2000
+  //       })
+  //     }
+  //   })
+  // },
 
   /**
    * 生命周期函数--监听页面隐藏

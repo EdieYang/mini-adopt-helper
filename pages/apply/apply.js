@@ -26,7 +26,7 @@ Page({
   onLoad: function(options) {
     applyListArr = []
     status = '0'
-    this.getApplyList()
+    // this.getApplyList()
   },
 
   chooseTab: function(e) {

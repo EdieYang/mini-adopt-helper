@@ -30,7 +30,7 @@
       还剩{{leftTime}}可以签协议
     </block>
     <block wx:if='{{applyInfo.applyStatus==4}}'>
-        <button class="success-btn" bindtap='contractDetail'>查看领养协议</button>
+      <button class="success-btn" bindtap='contractDetail'>查看领养协议</button>
     </block>
     <block wx:if='{{applyInfo.applyStatus==5}}'>
       取消原因：{{applyInfo.applyResp}}
@@ -387,9 +387,26 @@
     <view class='item-label'>职业情况</view>
     <view class='item-info'>{{applyInfo.job}}</view>
   </view>
-
+  <view class='body-item'>
+    <view class='item-label'>申请人微信</view>
+    <view class='item-info'>{{applyInfo.wxAccount}}</view>
+  </view>
+  <view class='body-item'>
+    <view class='item-label'>申请人手机号</view>
+    <view class='item-info'>{{applyInfo.mobilePhone}}</view>
+  </view>
+  <view class='body-item'>
+    <view class='line-btn' data-wx='{{applyInfo.wxAccount}}' bindtap='copyWx'>
+      <image class='btn-icon' src='../images/wechat.png' style='width:45rpx;height:45rpx;'></image>
+      <text class='{{petInfo.wxId?"":"disabled"}}'>复制微信号</text>
+    </view>
+    <view class='line-btn' data-phone='{{applyInfo.mobilePhone}}' bindtap='call'>
+      <image class='btn-icon' src='../images/tel.png'></image>
+      <text class='{{petInfo.mobilePhone?"":"disabled"}}'>拨打电话</text>
+    </view>
+  </view>
   <view class='body-header' style='margin-top:60rpx;'>申请人留言</view>
-  <view class='to-adopt'>{{applyInfo.toAdopter}}</view>
+  <view class='to-adopt'>{{applyInfo.toAdopter==null?'无':applyInfo.toAdopter}}</view>
 
 
   <view class='body-header' style='margin-top:60rpx;'>申请领养的宠物</view>

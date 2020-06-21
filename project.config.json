@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.4",
+	"libVersion": "2.11.2",
 	"appid": "wx84007a216d0929d0",
 	"projectname": "mini-adopt-helper",
 	"debugOptions": {

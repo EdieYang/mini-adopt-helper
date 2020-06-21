@@ -51,6 +51,9 @@ Page({
       return
     }
     password = decryptUtil.sha256(password)
+    wx.showLoading({
+      title: '登录中',
+    })
     wx.request({
       url: app.globalData.requestUrlCms + '/sys/login',
       data: {
@@ -75,9 +78,7 @@ Page({
                   showFilter: true
                 })
               } else {
-                wx.showLoading({
-                  title: '登录中',
-                })
+                
                 app.globalData.userInfo = userInfo
                 userInfo.expire = new Date()
                 wx.setStorage({
